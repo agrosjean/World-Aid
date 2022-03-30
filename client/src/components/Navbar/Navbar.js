@@ -1,30 +1,21 @@
 import React from "react";
-import {
-  Navbar as BootstrapNavbar,
-  Nav,
-  NavDropdown,
-  Form,
-  Button,
-  Container,
-} from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Navbar as BootstrapNavbar, Nav, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import Stack from "@mui/material/Stack";
 import "./Navbar.css";
 
 function Navbar() {
-  const isLoggedIn = localStorage.getItem("id"); // 14 or null;
-  const isAdmin = JSON.parse(localStorage.getItem("admin"));
+  // const isLoggedIn = localStorage.getItem("id"); // 14 or null;
+  // const isAdmin = JSON.parse(localStorage.getItem("admin"));
 
-  const navigate = useNavigate();
-  const logout = () => {
-    fetch("/logout", { method: "DELETE" }).then((res) => {
-      if (res.ok) {
-        localStorage.clear();
-        navigate("/login");
-      }
-    });
-  };
+  // const navigate = useNavigate();
+  // const logout = () => {
+  //   fetch("/logout", { method: "DELETE" }).then((res) => {
+  //     if (res.ok) {
+  //       localStorage.clear();
+  //       navigate("/login");
+  //     }
+  //   });
+  // };
 
   return (
     <BootstrapNavbar className="NavbarItems" bg="light" expand="lg">
@@ -54,27 +45,7 @@ function Navbar() {
                 <Nav.Link>Causes</Nav.Link>
               </LinkContainer>
             </LinkContainer>
-            {isLoggedIn && (
-              <LinkContainer to="/myReview">
-                <Nav.Link>My Reviews</Nav.Link>
-              </LinkContainer>
-            )}
-            {isLoggedIn && isAdmin && (
-              <LinkContainer to="/admin">
-                <Nav.Link>Admin</Nav.Link>
-              </LinkContainer>
-            )}
           </Nav>
-          <Stack direction="row" spacing={2}>
-            {isLoggedIn ? (
-              <Button onClick={logout}>Logout</Button>
-            ) : (
-              <>
-                <Link to="/signup">SignUp</Link>
-                <Link to="/login">LogIn</Link>
-              </>
-            )}
-          </Stack>
         </BootstrapNavbar.Collapse>
       </Container>
     </BootstrapNavbar>
