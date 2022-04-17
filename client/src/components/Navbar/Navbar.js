@@ -1,5 +1,10 @@
 import React from "react";
-import { Navbar as BootstrapNavbar, Nav, Container } from "react-bootstrap";
+import {
+  Navbar as BootstrapNavbar,
+  Nav,
+  Container,
+  NavDropdown,
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Navbar.css";
 
@@ -21,7 +26,7 @@ function Navbar() {
     <BootstrapNavbar className="NavbarItems" bg="light" expand="lg">
       <Container fluid>
         <BootstrapNavbar.Brand className="navbar-logo">
-          <h2>World-Aid</h2>
+          <h1>World-Aid</h1>
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle
           className="fab fa-react"
@@ -36,14 +41,17 @@ function Navbar() {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
+
             <LinkContainer to="/">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
+
             <LinkContainer to="/">
-              <Nav.Link>Location</Nav.Link>
-              <LinkContainer to="/">
-                <Nav.Link>Causes</Nav.Link>
-              </LinkContainer>
+              <Nav.Link>Locations</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/">
+              <Nav.Link>Causes</Nav.Link>
             </LinkContainer>
           </Nav>
         </BootstrapNavbar.Collapse>
